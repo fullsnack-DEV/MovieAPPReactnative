@@ -13,6 +13,7 @@ import {
 } from "react-native";
 
 import Movie from "../API/getmovies";
+import BackDropmovie from "../Components/BackDropmovie";
 import PopularCardcom from "../Components/PopularCardcom";
 import RatingsCom from "../Components/RatingsCom";
 
@@ -52,6 +53,7 @@ export default function HomeScreen() {
     <SafeAreaView style={{ flex: 1, backgroundColor: "#29282c" }}>
       <ScrollView>
         <View>
+          <BackDropmovie movies={popular} scrollX={scrollX} />
           <Animated.FlatList
             data={popular}
             horizontal
