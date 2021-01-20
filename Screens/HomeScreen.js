@@ -9,13 +9,16 @@ import {
   Dimensions,
   Animated,
   ScrollView,
-  _View,
+  Image,
 } from "react-native";
 
 import Movie from "../API/getmovies";
 import BackDropmovie from "../Components/BackDropmovie";
+
 import PopularCardcom from "../Components/PopularCardcom";
 import RatingsCom from "../Components/RatingsCom";
+import TitleComponent from "../Components/TitleComponent";
+import Topratedcom from "../Components/Topratedcom";
 
 const { width, height } = Dimensions.get("window");
 
@@ -29,6 +32,7 @@ const SPACER_SIZE = (width - ITEM_SIZE) / 2;
 export default function HomeScreen() {
   const [popular, setpopular] = useState([]);
   const [errorM, seterrorM] = useState("");
+  const [upcoming, setupcoming] = useState([]);
 
   const scrollX = useRef(new Animated.Value(0)).current;
 
@@ -41,8 +45,11 @@ export default function HomeScreen() {
   //creating a async function to fetch
   const loadmovie = async () => {
     const response = await Movie.getpopular();
+    const response2 = await Movie.getupcoming();
     const result = response.data.results;
+
     setpopular([{ key: "left" }, ...result, { key: "right" }]);
+    setupcoming(response2.data.results);
   };
 
   //getting the poster path from different URL
@@ -52,8 +59,8 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#29282c" }}>
       <ScrollView>
-        <View>
-          <BackDropmovie movies={popular} scrollX={scrollX} />
+        <BackDropmovie movies={popular} scrollX={scrollX} />
+        <View style={{}}>
           <Animated.FlatList
             data={popular}
             horizontal
@@ -92,6 +99,24 @@ export default function HomeScreen() {
               );
             }}
           />
+          <View style={{ top: 10, height: "50%" }}>
+            <TitleComponent title={"Top Rated"} />
+            <FlatList
+              data={upcoming}
+              keyExtractor={(item) => item.id}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              renderItem={({ item, index }) => (
+                <Topratedcom
+                  poster={getposter(item.poster_path)}
+                  title={item.title}
+                />
+              )}
+            />
+          </View>
+          <View style={{ height: "10%" }}>
+            <View style={{ height: 80 }} />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

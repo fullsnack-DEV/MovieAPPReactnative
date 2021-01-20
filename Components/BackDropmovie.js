@@ -34,13 +34,12 @@ export default function BackDropmovie({ movies, scrollX }) {
       <FlatList
         horizontal
         style={{
-          flex: 1,
           width,
         }}
         contentContainerStyle={{
           width,
           height: height * 0.6,
-          backgroundColor: "blue",
+
           flexDirection: "column",
           justifyContent: "center",
         }}
@@ -48,7 +47,7 @@ export default function BackDropmovie({ movies, scrollX }) {
         keyExtractor={(item) => item.id}
         renderItem={({ item, index }) => {
           const inputRange = [(index - 2) * ITEM_SIZE, (index - 1) * ITEM_SIZE];
-          const outputRange = [0, -width];
+          const outputRange = [0, width];
           const translateX = scrollX.interpolate({
             inputRange,
             outputRange,
@@ -79,11 +78,11 @@ export default function BackDropmovie({ movies, scrollX }) {
         }}
       />
       <LinearGradient
-        colors={["rgba(0, 0, 0, 0)", "#29282c"]}
+        colors={["transparent", "#29282c"]}
         style={{
           position: "absolute",
           bottom: 0,
-          height: BACKDROP_HEIGHT,
+          height: BACKDROP_HEIGHT * 0.6,
           width,
         }}
       />
