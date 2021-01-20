@@ -11,4 +11,10 @@ const getupcoming = () => {
   );
 };
 
+const getNowplaying = () => {
+  return movies.get(
+    "/now_playing?api_key=6210c279cdb193474eab3c90fade739b&language=en-US&page=1"
+  );
+};
+
 export default { getpopular, getupcoming };

@@ -1024,6 +1024,11 @@
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
+"@expo-google-fonts/copse@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/copse/-/copse-0.1.0.tgz#8dec17a14c3994f239370468030e2c58f3091e4e"
+  integrity sha512-qhj/K7sZh50ikLI7+ytejt5NMQNReTFBu6gdvTGWOVU79S6uHi2Lc1zyygQvynM2XL6F7XmIpnXQMNrBtFFF6w==
+
 "@expo/babel-preset-cli@0.2.18":
   version "0.2.18"
   resolved "https://registry.yarnpkg.com/@expo/babel-preset-cli/-/babel-preset-cli-0.2.18.tgz#136acf8a0efe259e29ebc614b68552e5acb47d86"

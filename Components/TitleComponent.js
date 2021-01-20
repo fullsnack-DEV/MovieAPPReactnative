@@ -4,7 +4,9 @@ import { View, Text, StyleSheet } from "react-native";
 export default function TitleComponent({ title }) {
   return (
     <View style={styles.txtcontainer}>
-      <Text style={styles.txt}> {title} </Text>
+      <Text style={styles.txt} numberOfLines={1}>
+        {title}
+      </Text>
     </View>
   );
 }
@@ -15,7 +17,8 @@ const styles = StyleSheet.create({
     top: 15,
   },
   txt: {
-    fontSize: 25,
+    fontSize: 24,
     color: "#fff",
+    fontFamily: "copse",
   },
 });

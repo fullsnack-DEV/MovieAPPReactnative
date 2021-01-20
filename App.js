@@ -3,11 +3,18 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import AppNavigator from "./Navigation/AppNavigator";
-import * as font from "expo-font";
+
 import AppLoading from "expo-app-loading";
+import { useFonts, copse } from "@expo-google-fonts/copse";
 
 export default function App() {
-  const [fontload, setFontload] = useState(false);
+  let [fontsloaded, error] = useFonts({
+    copse,
+  });
+
+  if (fontsloaded) {
+    return <AppLoading />;
+  }
 
   return (
     <NavigationContainer>

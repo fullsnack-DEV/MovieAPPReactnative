@@ -102,21 +102,21 @@ export default function HomeScreen() {
           <View style={{ top: 10, height: "50%" }}>
             <TitleComponent title={"Top Rated"} />
             <FlatList
-              data={upcoming}
+              data={upcoming.reverse()}
               keyExtractor={(item) => item.id}
               horizontal
               showsHorizontalScrollIndicator={false}
-              renderItem={({ item, index }) => (
-                <Topratedcom
-                  poster={getposter(item.poster_path)}
-                  title={item.title}
-                />
-              )}
+              renderItem={({ item, index }) => {
+                return (
+                  <Topratedcom
+                    poster={getposter(item.poster_path)}
+                    title={item.title}
+                  />
+                );
+              }}
             />
           </View>
-          <View style={{ height: "10%" }}>
-            <View style={{ height: 80 }} />
-          </View>
+          <View style={{ height: "10%" }}></View>
         </View>
       </ScrollView>
     </SafeAreaView>
