@@ -33,7 +33,7 @@ export default function HomeScreen() {
   const [popular, setpopular] = useState([]);
   const [errorM, seterrorM] = useState("");
   const [upcoming, setupcoming] = useState([]);
-
+  const [nowplaying, setnowplaying] = useState([]);
   const scrollX = useRef(new Animated.Value(0)).current;
 
   //calling the API first time when it renders
@@ -46,10 +46,13 @@ export default function HomeScreen() {
   const loadmovie = async () => {
     const response = await Movie.getpopular();
     const response2 = await Movie.getupcoming();
+    const response3 = await Movie.getNowplaying();
+
     const result = response.data.results;
 
     setpopular([{ key: "left" }, ...result, { key: "right" }]);
     setupcoming(response2.data.results);
+    setnowplaying(response3.data.results);
   };
 
   //getting the poster path from different URL
@@ -99,24 +102,68 @@ export default function HomeScreen() {
               );
             }}
           />
-          <View style={{ top: 10, height: "50%" }}>
-            <TitleComponent title={"Top Rated"} />
-            <FlatList
-              data={upcoming.reverse()}
-              keyExtractor={(item) => item.id}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              renderItem={({ item, index }) => {
-                return (
-                  <Topratedcom
-                    poster={getposter(item.poster_path)}
-                    title={item.title}
-                  />
-                );
-              }}
-            />
+          <View style={{ height: height * 3 }}>
+            <View>
+              <View
+                style={{
+                  height: height * 0.5,
+
+                  top: "-20%",
+                }}
+              >
+                <TitleComponent title={"Top Rated"} />
+                <FlatList
+                  data={nowplaying.reverse()}
+                  keyExtractor={(item) => item.id}
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  renderItem={({ item, index }) => {
+                    return (
+                      <Topratedcom
+                        poster={getposter(item.poster_path)}
+                        title={item.title}
+                      />
+                    );
+                  }}
+                />
+              </View>
+
+              <View style={{ height: height * 0.5, top: "-20%" }}>
+                <TitleComponent title={"Newly arrived"} />
+                <FlatList
+                  data={upcoming.reverse()}
+                  keyExtractor={(item) => item.id}
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  renderItem={({ item, index }) => {
+                    return (
+                      <Topratedcom
+                        poster={getposter(item.poster_path)}
+                        title={item.title}
+                      />
+                    );
+                  }}
+                />
+              </View>
+              <View style={{ height: height * 0.5, top: "-20%" }}>
+                <TitleComponent title={"Newly arrived"} />
+                <FlatList
+                  data={upcoming.reverse()}
+                  keyExtractor={(item) => item.id}
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  renderItem={({ item, index }) => {
+                    return (
+                      <Topratedcom
+                        poster={getposter(item.poster_path)}
+                        title={item.title}
+                      />
+                    );
+                  }}
+                />
+              </View>
+            </View>
           </View>
-          <View style={{ height: "10%" }}></View>
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -14,10 +14,11 @@ export default function TitleComponent({ title }) {
 const styles = StyleSheet.create({
   txtcontainer: {
     left: 20,
-    top: 15,
+    top: -10,
   },
   txt: {
-    fontSize: 24,
+    fontSize: 20,
+    fontWeight: "bold",
     color: "#fff",
     fontFamily: "copse",
   },
