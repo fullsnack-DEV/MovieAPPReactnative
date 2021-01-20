@@ -13,6 +13,7 @@ import {
 } from "react-native";
 
 import Movie from "../API/getmovies";
+import tv from "../API/Tmdb";
 import BackDropmovie from "../Components/BackDropmovie";
 
 import PopularCardcom from "../Components/PopularCardcom";
@@ -34,6 +35,8 @@ export default function HomeScreen() {
   const [errorM, seterrorM] = useState("");
   const [upcoming, setupcoming] = useState([]);
   const [nowplaying, setnowplaying] = useState([]);
+  const [shows, setshows] = useState([]);
+  const [onair, setonair] = useState([]);
   const scrollX = useRef(new Animated.Value(0)).current;
 
   //calling the API first time when it renders
@@ -47,12 +50,15 @@ export default function HomeScreen() {
     const response = await Movie.getpopular();
     const response2 = await Movie.getupcoming();
     const response3 = await Movie.getNowplaying();
-
+    const response4 = await Movie.getshows();
+    const response5 = await Movie.getonair();
     const result = response.data.results;
 
     setpopular([{ key: "left" }, ...result, { key: "right" }]);
     setupcoming(response2.data.results);
     setnowplaying(response3.data.results);
+    setshows(response4.data.results);
+    setonair(response5.data.results);
   };
 
   //getting the poster path from different URL
@@ -102,7 +108,7 @@ export default function HomeScreen() {
               );
             }}
           />
-          <View style={{ height: height * 3 }}>
+          <View style={{ height: height * 2 }}>
             <View>
               <View
                 style={{
@@ -146,9 +152,26 @@ export default function HomeScreen() {
                 />
               </View>
               <View style={{ height: height * 0.5, top: "-20%" }}>
-                <TitleComponent title={"Newly arrived"} />
+                <TitleComponent title={"Tv Shows"} />
                 <FlatList
-                  data={upcoming.reverse()}
+                  data={shows}
+                  keyExtractor={(item) => item.id}
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  renderItem={({ item, index }) => {
+                    return (
+                      <Topratedcom
+                        poster={getposter(item.poster_path)}
+                        title={item.title}
+                      />
+                    );
+                  }}
+                />
+              </View>
+              <View style={{ height: height * 0.5, top: "-20%" }}>
+                <TitleComponent title={"Shows on Air"} />
+                <FlatList
+                  data={onair}
                   keyExtractor={(item) => item.id}
                   horizontal
                   showsHorizontalScrollIndicator={false}
