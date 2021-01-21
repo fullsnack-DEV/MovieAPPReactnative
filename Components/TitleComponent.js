@@ -14,7 +14,7 @@ export default function TitleComponent({ title }) {
 const styles = StyleSheet.create({
   txtcontainer: {
     left: 20,
-    top: 10,
+    top: 18,
   },
   txt: {
     fontSize: 20,

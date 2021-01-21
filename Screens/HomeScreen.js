@@ -15,6 +15,7 @@ import {
 import Movie from "../API/getmovies";
 import tv from "../API/Tmdb";
 import BackDropmovie from "../Components/BackDropmovie";
+import Moviesflatlist from "../Components/Moviesflatlist";
 
 import PopularCardcom from "../Components/PopularCardcom";
 import RatingsCom from "../Components/RatingsCom";
@@ -113,77 +114,24 @@ export default function HomeScreen() {
               <View
                 style={{
                   height: height * 0.5,
-
-                  top: "-20%",
+                  top: "-18%",
                 }}
               >
                 <TitleComponent title={"Top Rated"} />
-                <FlatList
-                  data={nowplaying.reverse()}
-                  keyExtractor={(item) => item.id}
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                  renderItem={({ item, index }) => {
-                    return (
-                      <Topratedcom
-                        poster={getposter(item.poster_path)}
-                        title={item.title}
-                      />
-                    );
-                  }}
-                />
+                <Moviesflatlist data={nowplaying.reverse()} />
               </View>
 
               <View style={{ height: height * 0.5, top: "-20%" }}>
                 <TitleComponent title={"Newly arrived"} />
-                <FlatList
-                  data={upcoming.reverse()}
-                  keyExtractor={(item) => item.id}
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                  renderItem={({ item, index }) => {
-                    return (
-                      <Topratedcom
-                        poster={getposter(item.poster_path)}
-                        title={item.title}
-                      />
-                    );
-                  }}
-                />
+                <Moviesflatlist data={upcoming.reverse()} />
               </View>
-              <View style={{ height: height * 0.5, top: "-20%" }}>
+              <View style={{ height: height * 0.5, top: "-22%" }}>
                 <TitleComponent title={"Tv Shows"} />
-                <FlatList
-                  data={shows}
-                  keyExtractor={(item) => item.id}
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                  renderItem={({ item, index }) => {
-                    return (
-                      <Topratedcom
-                        poster={getposter(item.poster_path)}
-                        title={item.title}
-                      />
-                    );
-                  }}
-                />
+                <Moviesflatlist data={shows} />
               </View>
-              <View style={{ height: height * 0.5, top: "-20%" }}>
+              <View style={{ height: height * 0.5, top: "-24%" }}>
                 <TitleComponent title={"Shows on Air"} />
-                <FlatList
-                  data={onair}
-                  keyExtractor={(item) => item.id}
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                  renderItem={({ item, index }) => {
-                    return (
-                      <Topratedcom
-                        poster={getposter(item.poster_path)}
-                        title={item.title}
-                      />
-                    );
-                  }}
-                />
+                <Moviesflatlist data={onair} />
               </View>
             </View>
           </View>

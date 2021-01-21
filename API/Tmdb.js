@@ -1,10 +1,11 @@
 import axios from "axios";
+import { create } from "apisauce";
 
-export const movies = axios.create({
+export const movies = create({
   baseURL: "https://api.themoviedb.org/3/movie",
 });
 
-export const tv = axios.create({
+export const tv = create({
   baseURL: "https://api.themoviedb.org/3/tv",
 });
 
