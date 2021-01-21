@@ -78,11 +78,11 @@ export default function BackDropmovie({ movies, scrollX }) {
         }}
       />
       <LinearGradient
-        colors={["transparent", "#29282c"]}
+        colors={["transparent", "#000000"]}
         style={{
           position: "absolute",
           bottom: 0,
-          height: BACKDROP_HEIGHT * 0.6,
+          height: BACKDROP_HEIGHT * 0.1,
           width,
         }}
       />

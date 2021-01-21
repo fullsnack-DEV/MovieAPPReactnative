@@ -38,6 +38,7 @@ export default function HomeScreen() {
   const [nowplaying, setnowplaying] = useState([]);
   const [shows, setshows] = useState([]);
   const [onair, setonair] = useState([]);
+  const [Arriving, setArriving] = useState([]);
   const scrollX = useRef(new Animated.Value(0)).current;
 
   //calling the API first time when it renders
@@ -53,6 +54,7 @@ export default function HomeScreen() {
     const response3 = await Movie.getNowplaying();
     const response4 = await Movie.getshows();
     const response5 = await Movie.getonair();
+    const response6 = await Movie.Arrivingtoday();
     const result = response.data.results;
 
     setpopular([{ key: "left" }, ...result, { key: "right" }]);
@@ -60,6 +62,7 @@ export default function HomeScreen() {
     setnowplaying(response3.data.results);
     setshows(response4.data.results);
     setonair(response5.data.results);
+    setArriving(response6.data.results);
   };
 
   //getting the poster path from different URL
@@ -67,10 +70,10 @@ export default function HomeScreen() {
     `https://image.tmdb.org/t/p/w440_and_h660_face${path}`;
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#29282c" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#000000" }}>
       <ScrollView>
-        <BackDropmovie movies={popular} scrollX={scrollX} />
-        <View style={{}}>
+        <View>
+          <BackDropmovie movies={popular} scrollX={scrollX} />
           <Animated.FlatList
             data={popular}
             horizontal
@@ -109,29 +112,33 @@ export default function HomeScreen() {
               );
             }}
           />
-          <View style={{ height: height * 2 }}>
+          <View style={{ height: height * 1.3 }}>
             <View>
               <View
                 style={{
                   height: height * 0.5,
-                  top: "-18%",
+                  top: "-14%",
                 }}
               >
                 <TitleComponent title={"Top Rated"} />
                 <Moviesflatlist data={nowplaying.reverse()} />
               </View>
 
-              <View style={{ height: height * 0.5, top: "-20%" }}>
+              <View style={{ height: height * 0.5, top: "-21%" }}>
                 <TitleComponent title={"Newly arrived"} />
                 <Moviesflatlist data={upcoming.reverse()} />
               </View>
-              <View style={{ height: height * 0.5, top: "-22%" }}>
+              <View style={{ height: height * 0.5, top: "-28%" }}>
                 <TitleComponent title={"Tv Shows"} />
-                <Moviesflatlist data={shows} />
+                <Moviesflatlist data={shows.reverse()} />
               </View>
-              <View style={{ height: height * 0.5, top: "-24%" }}>
+              <View style={{ height: height * 0.5, top: "-35%" }}>
                 <TitleComponent title={"Shows on Air"} />
                 <Moviesflatlist data={onair} />
+              </View>
+              <View style={{ height: height * 0.5, top: "-42 %" }}>
+                <TitleComponent title={"Ariving Today"} />
+                <Moviesflatlist data={Arriving.reverse()} />
               </View>
             </View>
           </View>

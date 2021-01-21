@@ -29,4 +29,17 @@ const getonair = () => {
   );
 };
 
-export default { getpopular, getupcoming, getNowplaying, getshows, getonair };
+const Arrivingtoday = () => {
+  return tv.get(
+    "airing_today?api_key=6210c279cdb193474eab3c90fade739b&language=en-US&page=1"
+  );
+};
+
+export default {
+  getpopular,
+  getupcoming,
+  getNowplaying,
+  getshows,
+  getonair,
+  Arrivingtoday,
+};

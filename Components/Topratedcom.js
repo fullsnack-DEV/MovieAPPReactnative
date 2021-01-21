@@ -11,19 +11,19 @@ export default function Topratedcom({ poster, title }) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 15,
-    height: "40%",
-    top: 20,
+    padding: 5,
+    height: "80%",
+    top: 10,
   },
   img: {
-    height: "240%",
-    width: 180,
+    height: "90%",
+    width: 150,
     borderRadius: 15,
+    left: 12,
   },
 
   txt: {
     color: "#fff",
-
     fontSize: 18,
   },
   txtcontainer: {
