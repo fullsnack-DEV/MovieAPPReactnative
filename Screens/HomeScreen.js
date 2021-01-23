@@ -10,17 +10,20 @@ import {
   Animated,
   ScrollView,
   Image,
+  TouchableOpacity,
 } from "react-native";
 
 import Movie from "../API/getmovies";
-import tv from "../API/Tmdb";
+import tv, { movies } from "../API/Tmdb";
 import BackDropmovie from "../Components/BackDropmovie";
+import Errormessge from "../Components/errormessge";
 import Moviesflatlist from "../Components/Moviesflatlist";
 
 import PopularCardcom from "../Components/PopularCardcom";
 import RatingsCom from "../Components/RatingsCom";
 import TitleComponent from "../Components/TitleComponent";
 import Topratedcom from "../Components/Topratedcom";
+import UseApi from "../Hooks/UseApi";
 
 const { width, height } = Dimensions.get("window");
 
@@ -31,39 +34,25 @@ const EMPTY_ITEM_SIZE = (width - ITEM_SIZE) / 2;
 const SPACING_UP = 10;
 const SPACER_SIZE = (width - ITEM_SIZE) / 2;
 
-export default function HomeScreen() {
-  const [popular, setpopular] = useState([]);
-  const [errorM, seterrorM] = useState("");
-  const [upcoming, setupcoming] = useState([]);
-  const [nowplaying, setnowplaying] = useState([]);
-  const [shows, setshows] = useState([]);
-  const [onair, setonair] = useState([]);
-  const [Arriving, setArriving] = useState([]);
+export default function HomeScreen({ navigation }) {
   const scrollX = useRef(new Animated.Value(0)).current;
 
   //calling the API first time when it renders
 
+  const {
+    request: loadmovies,
+    popular,
+    errorM,
+    nowplaying,
+    onair,
+    upcoming,
+    Arriving,
+    shows,
+  } = UseApi();
+
   useEffect(() => {
-    loadmovie();
+    loadmovies();
   }, []);
-
-  //creating a async function to fetch
-  const loadmovie = async () => {
-    const response = await Movie.getpopular();
-    const response2 = await Movie.getupcoming();
-    const response3 = await Movie.getNowplaying();
-    const response4 = await Movie.getshows();
-    const response5 = await Movie.getonair();
-    const response6 = await Movie.Arrivingtoday();
-    const result = response.data.results;
-
-    setpopular([{ key: "left" }, ...result, { key: "right" }]);
-    setupcoming(response2.data.results);
-    setnowplaying(response3.data.results);
-    setshows(response4.data.results);
-    setonair(response5.data.results);
-    setArriving(response6.data.results);
-  };
 
   //getting the poster path from different URL
   const getposter = (path) =>
@@ -71,6 +60,11 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#000000" }}>
+      {errorM && (
+        <>
+          <Errormessge error={"Not able to load"} />
+        </>
+      )}
       <ScrollView>
         <View>
           <BackDropmovie movies={popular} scrollX={scrollX} />
@@ -103,16 +97,18 @@ export default function HomeScreen() {
                 outputRange: [0, -50, 0],
               });
               return (
-                <PopularCardcom
-                  poster={getposter(item.poster_path)} //passing the poster path to the getposter to get the poster
-                  title={item.title}
-                  rating={item.vote_average}
-                  translateY={translateY}
-                />
+                <TouchableOpacity onPress={() => navigation.navigate("info")}>
+                  <PopularCardcom
+                    poster={getposter(item.poster_path)} //passing the poster path to the getposter to get the poster
+                    title={item.title}
+                    rating={item.vote_average}
+                    translateY={translateY}
+                  />
+                </TouchableOpacity>
               );
             }}
           />
-          <View style={{ height: height * 1.3 }}>
+          <View style={{ height: height * 1.4 }}>
             <View>
               <View
                 style={{
@@ -121,24 +117,39 @@ export default function HomeScreen() {
                 }}
               >
                 <TitleComponent title={"Top Rated"} />
-                <Moviesflatlist data={nowplaying.reverse()} />
+                <Moviesflatlist
+                  data={nowplaying.reverse()}
+                  navigation={navigation}
+                />
               </View>
 
-              <View style={{ height: height * 0.5, top: "-21%" }}>
+              <View style={{ height: height * 0.5, top: "-20%" }}>
                 <TitleComponent title={"Newly arrived"} />
-                <Moviesflatlist data={upcoming.reverse()} />
+                <Moviesflatlist
+                  data={upcoming.reverse()}
+                  navigation={navigation}
+                />
               </View>
-              <View style={{ height: height * 0.5, top: "-28%" }}>
+              <View style={{ height: height * 0.5, top: "-26%" }}>
                 <TitleComponent title={"Tv Shows"} />
-                <Moviesflatlist data={shows.reverse()} />
+                <Moviesflatlist
+                  data={shows.reverse()}
+                  navigation={navigation}
+                />
               </View>
-              <View style={{ height: height * 0.5, top: "-35%" }}>
-                <TitleComponent title={"Shows on Air"} />
+              <View style={{ height: height * 0.5, top: "-32%" }}>
+                <TitleComponent
+                  title={"Shows on Air"}
+                  navigation={navigation}
+                />
                 <Moviesflatlist data={onair} />
               </View>
-              <View style={{ height: height * 0.5, top: "-42 %" }}>
+              <View style={{ height: height * 0.5, top: "-38%" }}>
                 <TitleComponent title={"Ariving Today"} />
-                <Moviesflatlist data={Arriving.reverse()} />
+                <Moviesflatlist
+                  data={Arriving.reverse()}
+                  navigation={navigation}
+                />
               </View>
             </View>
           </View>

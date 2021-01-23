@@ -1,4 +1,3 @@
-import axios from "axios";
 import { create } from "apisauce";
 
 export const movies = create({

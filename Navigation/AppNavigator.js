@@ -7,6 +7,7 @@ import Accountscreen from "../Screens/Accountscreen";
 import FavScreen from "../Screens/FavScreen";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import HomeNavigator from "./HomeNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -65,7 +66,7 @@ const AppNavigator = () => (
   >
     <Tab.Screen
       name="Home"
-      component={HomeScreen}
+      component={HomeNavigator}
       options={{
         tabBarIcon: ({ size, color }) => (
           <MaterialCommunityIcons name="home-flood" size={29} color={color} />
