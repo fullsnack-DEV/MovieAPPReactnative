@@ -60,6 +60,7 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#000000" }}>
+      <StatusBar style="dark" />
       {errorM && (
         <>
           <Errormessge error={"Not able to load"} />
@@ -74,7 +75,7 @@ export default function HomeScreen({ navigation }) {
             showsHorizontalScrollIndicator={false}
             snapToInterval={ITEM_SIZE}
             decelerationRate={0}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => `${item.id}`}
             bounces={false}
             scrollEventThrottle={32}
             onScroll={Animated.event(

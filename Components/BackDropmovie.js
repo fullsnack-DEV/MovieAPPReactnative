@@ -44,7 +44,7 @@ export default function BackDropmovie({ movies, scrollX }) {
           justifyContent: "center",
         }}
         data={data}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item, index) => String(index)}
         renderItem={({ item, index }) => {
           const inputRange = [(index - 2) * ITEM_SIZE, (index - 1) * ITEM_SIZE];
           const outputRange = [0, width];
