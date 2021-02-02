@@ -63,7 +63,7 @@ export default function HomeScreen({ navigation }) {
       <StatusBar style="dark" />
       {errorM && (
         <>
-          <Errormessge error={"Not able to load"} />
+          <Errormessge error={"Not able to load the data "} />
         </>
       )}
       <ScrollView>
@@ -98,7 +98,13 @@ export default function HomeScreen({ navigation }) {
                 outputRange: [0, -50, 0],
               });
               return (
-                <TouchableOpacity onPress={() => navigation.navigate("info")}>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("info", {
+                      item,
+                    })
+                  }
+                >
                   <PopularCardcom
                     poster={getposter(item.poster_path)} //passing the poster path to the getposter to get the poster
                     title={item.title}
@@ -143,7 +149,7 @@ export default function HomeScreen({ navigation }) {
                   title={"Shows on Air"}
                   navigation={navigation}
                 />
-                <Moviesflatlist data={onair} />
+                <Moviesflatlist data={onair} navigation={navigation} />
               </View>
               <View style={{ height: height * 0.5, top: "-38%" }}>
                 <TitleComponent title={"Ariving Today"} />

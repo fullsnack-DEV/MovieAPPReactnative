@@ -16,11 +16,14 @@ export default useApi = () => {
     const response3 = await Movie.getonair();
     const response4 = await Movie.getupcoming();
     const response5 = await Movie.getNowplaying();
-    if (!response.ok) return seterror(true);
-    if (!response2.ok) return seterror(true);
-    if (!response3.ok) return seterror(true);
-    if (!response4.ok) return seterror(true);
-    if (!response5.ok) return seterror(true);
+    if (
+      !response.ok ||
+      !response2.ok ||
+      !response3.ok ||
+      !response4.ok ||
+      !response5.ok
+    )
+      return seterror(true);
 
     seterror(false);
 

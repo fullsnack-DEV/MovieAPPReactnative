@@ -16,8 +16,16 @@ export default function Moviesflatlist({ data, navigation }) {
         horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({ item, index }) => {
+          const name = item.name;
           return (
-            <TouchableOpacity onPress={() => navigation.navigate("info")}>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("info", {
+                  item,
+                  name,
+                })
+              }
+            >
               <Topratedcom
                 poster={getposter(item.poster_path)}
                 title={item.title}

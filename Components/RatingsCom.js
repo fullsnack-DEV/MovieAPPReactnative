@@ -11,7 +11,15 @@ export default function RatingsCom({ rating }) {
     <View style={styles.rating}>
       <Text style={styles.ratingno}>{rating}</Text>
       {ratings.map((type, index) => {
-        return <AntDesign key={index} name={type} size={12} color="tomato" />;
+        return (
+          <AntDesign
+            key={index}
+            name={type}
+            size={12}
+            color="tomato"
+            style={{ marginRight: 5 }}
+          />
+        );
       })}
     </View>
   );
@@ -19,7 +27,7 @@ export default function RatingsCom({ rating }) {
 
 const styles = StyleSheet.create({
   ratingno: {
-    marginRight: 4,
+    marginRight: 12,
     color: "white",
     fontSize: 14,
   },
@@ -27,6 +35,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+
     marginVertical: 4,
   },
 });
