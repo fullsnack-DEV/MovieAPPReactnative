@@ -12,7 +12,7 @@ export default function Moviesflatlist({ data, navigation }) {
     <View>
       <FlatList
         data={data}
-        keyExtractor={(item) => `${item.id}`}
+        keyExtractor={(item, index) => String(index)}
         horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({ item, index }) => {

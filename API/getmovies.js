@@ -35,6 +35,13 @@ const Arrivingtoday = () => {
   );
 };
 
+const getcredit = (id) => {
+  console.log(`this is item ${id}`);
+  return movies.get(
+    `${id}/credits?api_key=6210c279cdb193474eab3c90fade739b&language=en-US`
+  );
+};
+
 export default {
   getpopular,
   getupcoming,
@@ -42,4 +49,5 @@ export default {
   getshows,
   getonair,
   Arrivingtoday,
+  getcredit,
 };
