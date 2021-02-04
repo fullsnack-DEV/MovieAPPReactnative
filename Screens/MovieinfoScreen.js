@@ -126,12 +126,12 @@ export default function MovieinfoScreen({ route }) {
         <View
           style={{
             position: "absolute",
-            top: height * 0.878,
+            top: height * 0.87,
             flexDirection: "row",
             alignSelf: "center",
           }}
         >
-          <ButtonCom title="Add To Favourite" />
+          <ButtonCom title="Add to WatchList!" />
         </View>
         <LinearGradient
           colors={["transparent", "#000000"]}
