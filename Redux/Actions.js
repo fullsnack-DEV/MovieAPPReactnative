@@ -2,14 +2,16 @@ import { ADDTOFAV, DELETEFAV } from "./ActionType";
 
 //creating a actions creators
 
-export const addtofav = (data) => ({
+export const addtofav = (title, img, id) => ({
   type: ADDTOFAV,
-  Payload: data,
+  title: title,
+  img: img,
+  id: id,
 });
 
-export const deletefav = (Key) => ({
+export const deletefav = (id) => ({
   type: DELETEFAV,
-  Payload: Key,
+  id: id,
 });
 
 //What is Action Creators ?

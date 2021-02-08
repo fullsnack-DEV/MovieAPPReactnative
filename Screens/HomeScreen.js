@@ -75,9 +75,9 @@ export default function HomeScreen({ navigation }) {
             showsHorizontalScrollIndicator={false}
             snapToInterval={ITEM_SIZE}
             decelerationRate={0}
-            keyExtractor={(item) => `${item.id}`}
+            keyExtractor={(item, index) => String(index)}
             bounces={false}
-            scrollEventThrottle={32}
+            scrollEventThrottle={16}
             onScroll={Animated.event(
               [{ nativeEvent: { contentOffset: { x: scrollX } } }],
               { useNativeDriver: true }

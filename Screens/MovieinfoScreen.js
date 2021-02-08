@@ -12,7 +12,10 @@ import { LinearGradient } from "expo-linear-gradient";
 import RatingsCom from "../Components/RatingsCom";
 import Movies from "../API/getmovies";
 import ButtonCom from "../Components/ButtonCom";
-
+import { useSelector, useDispatch } from "react-redux";
+//importing the hooks from React-Redux
+import { addtofav } from "../Redux/Actions";
+//importing a Action that we want to Dispatch
 //var
 const { width, height } = Dimensions.get("window");
 const BACKDROP_HEIGHT = height * 0.65;
@@ -21,8 +24,13 @@ const getposter = (path) =>
   `https://image.tmdb.org/t/p/w440_and_h660_face${path}`;
 
 export default function MovieinfoScreen({ route }) {
+  const dispatch = useDispatch();
+
   const { item, name } = route.params;
   const newid = item.id;
+  console.log(newid);
+  const title = item.title || item.name;
+  console.log(title);
 
   useEffect(() => {
     console.log("this is the cast");
@@ -131,7 +139,12 @@ export default function MovieinfoScreen({ route }) {
             alignSelf: "center",
           }}
         >
-          <ButtonCom title="Add to WatchList!" />
+          <ButtonCom
+            title="Add to WatchList!"
+            onPress={() =>
+              dispatch(addtofav(title, getposter(item.poster_path), newid))
+            }
+          />
         </View>
         <LinearGradient
           colors={["transparent", "#000000"]}

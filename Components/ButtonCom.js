@@ -1,10 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
 
-export default function ButtonCom({ title }) {
+export default function ButtonCom({ title, onPress }) {
   return (
-    <TouchableOpacity style={styles.buttoncontainer}>
+    <TouchableOpacity style={styles.buttoncontainer} onPress={onPress}>
       <Text
         style={{
           color: "#fff",

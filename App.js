@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import AppNavigator from "./Navigation/AppNavigator";
+import { Provider } from "react-redux";
+import { Store } from "./Redux/Store";
 
 import AppLoading from "expo-app-loading";
 import { useFonts, copse } from "@expo-google-fonts/copse";
@@ -17,9 +19,11 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <AppNavigator />
-    </NavigationContainer>
+    <Provider store={Store}>
+      <NavigationContainer>
+        <AppNavigator />
+      </NavigationContainer>
+    </Provider>
   );
 }
 

@@ -55,6 +55,7 @@ export default function BackDropmovie({ movies, scrollX }) {
 
           return (
             <Animated.View
+              key={(item, index) => String(index)}
               removeClippedSubviews={true}
               style={[
                 StyleSheet.absoluteFillObject,
@@ -72,6 +73,7 @@ export default function BackDropmovie({ movies, scrollX }) {
                 source={{ uri: getBackdropPath(item.backdrop_path) }}
                 style={{ height: height * 0.6, width }}
                 resizeMode="cover"
+                key={(index) => String(index)}
               />
             </Animated.View>
           );

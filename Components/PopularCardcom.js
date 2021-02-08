@@ -25,7 +25,6 @@ export default function PopularCardcom({ poster, title, rating, translateY }) {
           padding: SPACING * 2,
           alignItems: "center",
           transform: [{ translateY }],
-
           borderRadius: 34,
         }}
       >

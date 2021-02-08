@@ -13,9 +13,13 @@ const { height, width } = Dimensions.get("window");
 
 export default function DeleteItemCom() {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity style={{ marginRight: 35 }}>
       <View style={styles.container}>
-        <MaterialCommunityIcons name="delete-circle" size={45} color={"red"} />
+        <MaterialCommunityIcons
+          name="delete-circle"
+          size={45}
+          color={"white"}
+        />
       </View>
     </TouchableOpacity>
   );
@@ -27,9 +31,9 @@ const styles = StyleSheet.create({
     width: 60,
     alignItems: "center",
     borderRadius: 50,
-    backgroundColor: "#fff",
+
     justifyContent: "center",
-    top: height * 0.22,
+    top: 12,
     right: 18,
   },
 });

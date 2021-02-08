@@ -4,7 +4,11 @@ import { View, Text, StyleSheet, Image } from "react-native";
 export default function Topratedcom({ poster, title }) {
   return (
     <View style={styles.container}>
-      <Image source={{ uri: poster }} style={styles.img} />
+      <Image
+        source={{ uri: poster }}
+        style={styles.img}
+        key={(index) => String(index)}
+      />
     </View>
   );
 }
@@ -32,3 +36,5 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 });
+
+//Throwing error at the horizontal flatlist

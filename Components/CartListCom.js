@@ -1,19 +1,38 @@
 import React from "react";
-import { View, Text, SafeAreaView, Dimensions, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Dimensions,
+  StyleSheet,
+  Image,
+} from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
 //const
 const { height, width } = Dimensions.get("window");
 
-export default function CartListCom({ title, renderRightActions }) {
+export default function CartListCom({ title, renderRightActions, img }) {
   return (
     <View style={styles.containers}>
       <Swipeable renderRightActions={renderRightActions}>
         <View style={styles.favmovie}>
-          <View style={styles.imgcontainer} />
+          <View style={styles.imgcontainer}>
+            <Image
+              style={{
+                height: 70,
+                width: 70,
+                borderRadius: 50,
+                alignSelf: "center",
+              }}
+              source={{ uri: img }}
+            />
+          </View>
 
           <View style={styles.infocontainer}>
-            <Text style={{ color: "#000", fontSize: 20 }}>{title}</Text>
+            <Text style={{ color: "#000", fontSize: 15, fontWeight: "bold" }}>
+              {title}
+            </Text>
           </View>
         </View>
       </Swipeable>
@@ -23,20 +42,20 @@ export default function CartListCom({ title, renderRightActions }) {
 
 const styles = StyleSheet.create({
   favmovie: {
-    height: "59%",
-    width: "85%",
+    height: 80,
+    width: 300,
     backgroundColor: "#fff",
     alignSelf: "center",
-    top: height * 0.2,
+
     flexDirection: "row",
     borderRadius: 20,
+    marginBottom: 25,
   },
   imgcontainer: {
-    backgroundColor: "red",
     height: 60,
     width: 60,
     borderRadius: 30,
-    marginVertical: "3%",
+    marginVertical: "1.5%",
     marginLeft: "8%",
   },
   infocontainer: {
