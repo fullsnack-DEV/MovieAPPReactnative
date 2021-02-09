@@ -32,6 +32,17 @@ export default function FavScreen() {
           Fav Movies!
         </Text>
       </View>
+      <Text
+        style={{
+          color: "#fff",
+          top: -25,
+          alignSelf: "center",
+          fontWeight: "700",
+          fontSize: 15,
+        }}
+      >
+        Swipe Left to Delete
+      </Text>
       <FlatList
         style={styles.moviecartcontainer}
         data={cart}

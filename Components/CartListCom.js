@@ -15,17 +15,6 @@ const { height, width } = Dimensions.get("window");
 export default function CartListCom({ title, renderRightActions, img }) {
   return (
     <View style={styles.containers}>
-      <Text
-        style={{
-          color: "#fff",
-          top: -25,
-          alignSelf: "center",
-          fontWeight: "700",
-          fontSize: 15,
-        }}
-      >
-        Swipe Left to Delete
-      </Text>
       <Swipeable renderRightActions={renderRightActions}>
         <View style={styles.favmovie}>
           <View style={styles.imgcontainer}>
