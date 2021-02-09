@@ -1,4 +1,4 @@
-import { movies, tv } from "./Tmdb";
+import { movies, query, tv } from "./Tmdb";
 const getpopular = () => {
   return movies.get(
     "/popular?api_key=6210c279cdb193474eab3c90fade739b&language=en-US&page=1"
@@ -42,6 +42,12 @@ const getcredit = (id) => {
   );
 };
 
+const getqueryMovie = (term) => {
+  return query.get(
+    `/movie?api_key=6210c279cdb193474eab3c90fade739b&language=en-US&query=${term}&page=1&include_adult=false`
+  );
+};
+//exports
 export default {
   getpopular,
   getupcoming,
@@ -50,4 +56,5 @@ export default {
   getonair,
   Arrivingtoday,
   getcredit,
+  getqueryMovie,
 };

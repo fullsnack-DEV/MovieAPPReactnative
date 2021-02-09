@@ -8,4 +8,8 @@ export const tv = create({
   baseURL: "https://api.themoviedb.org/3/tv",
 });
 
-export default { movies, tv };
+export const query = create({
+  baseURL: "https://api.themoviedb.org/3/search",
+});
+
+export default { movies, tv, query };

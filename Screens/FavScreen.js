@@ -21,6 +21,17 @@ export default function FavScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#000000" }}>
+      <View
+        style={{
+          marginVertical: 25,
+          alignSelf: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ color: "red", fontSize: 16, fontWeight: "bold" }}>
+          Fav Movies!
+        </Text>
+      </View>
       <FlatList
         style={styles.moviecartcontainer}
         data={cart}
