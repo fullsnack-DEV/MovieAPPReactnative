@@ -21,7 +21,7 @@ export const mainreducer = (state = INTIALSTATE, action) => {
     case DELETEFAV:
       return {
         ...state,
-        Cart: state.Cart.filter((item) => item.id != id),
+        Cart: state.Cart.filter((item) => item.id != action.id),
       };
 
     default:

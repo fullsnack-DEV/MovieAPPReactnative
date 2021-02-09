@@ -11,9 +11,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 //const
 const { height, width } = Dimensions.get("window");
 
-export default function DeleteItemCom() {
+export default function DeleteItemCom({ onPress }) {
   return (
-    <TouchableOpacity style={{ marginRight: 35 }}>
+    <TouchableOpacity style={{ marginRight: 35 }} onPress={onPress}>
       <View style={styles.container}>
         <MaterialCommunityIcons
           name="delete-circle"

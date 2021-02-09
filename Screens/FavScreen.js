@@ -16,6 +16,7 @@ import { deletefav } from "../Redux/Actions";
 
 export default function FavScreen() {
   const cart = useSelector((state) => state.Cart);
+  const dispatch = useDispatch();
   console.log(cart);
 
   return (
@@ -29,7 +30,11 @@ export default function FavScreen() {
           <CartListCom
             title={data.item.title}
             img={data.item.img}
-            renderRightActions={() => <DeleteItemCom />}
+            renderRightActions={() => (
+              <DeleteItemCom
+                onPress={() => dispatch(deletefav(data.item.id))}
+              />
+            )}
           />
         )}
       />
@@ -39,7 +44,7 @@ export default function FavScreen() {
 
 const styles = StyleSheet.create({
   moviecartcontainer: {
-    top: 150,
+    top: 180,
     alignSelf: "center",
     width: "100%",
   },

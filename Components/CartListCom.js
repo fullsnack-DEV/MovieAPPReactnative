@@ -15,6 +15,17 @@ const { height, width } = Dimensions.get("window");
 export default function CartListCom({ title, renderRightActions, img }) {
   return (
     <View style={styles.containers}>
+      <Text
+        style={{
+          color: "#fff",
+          top: -25,
+          alignSelf: "center",
+          fontWeight: "700",
+          fontSize: 15,
+        }}
+      >
+        Swipe Left to Delete
+      </Text>
       <Swipeable renderRightActions={renderRightActions}>
         <View style={styles.favmovie}>
           <View style={styles.imgcontainer}>
@@ -30,7 +41,7 @@ export default function CartListCom({ title, renderRightActions, img }) {
           </View>
 
           <View style={styles.infocontainer}>
-            <Text style={{ color: "#000", fontSize: 15, fontWeight: "bold" }}>
+            <Text style={{ color: "#000", fontSize: 18, fontWeight: "bold" }}>
               {title}
             </Text>
           </View>
@@ -49,7 +60,6 @@ const styles = StyleSheet.create({
 
     flexDirection: "row",
     borderRadius: 20,
-    marginBottom: 25,
   },
   imgcontainer: {
     height: 60,
@@ -65,5 +75,7 @@ const styles = StyleSheet.create({
     width: "70%",
     marginLeft: 5,
   },
-  containers: {},
+  containers: {
+    padding: 25,
+  },
 });

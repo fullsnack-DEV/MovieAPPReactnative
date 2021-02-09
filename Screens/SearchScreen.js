@@ -1,10 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView, TextInput } from "react-native";
 
 export default function SearchScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#29282c" }}>
-      <Text>this is the SearchScreen</Text>
+      <View style={styles.Searchcontainer}>
+        <TextInput style={{ backgroundColor: "#fff" }} />
+      </View>
     </SafeAreaView>
   );
 }

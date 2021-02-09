@@ -19,7 +19,6 @@ const Tabbarcustombutton = ({ accessibilityState, children, onPress }) => {
       <View style={{ flex: 1, alignItems: "center" }}>
         <TouchableOpacity
           style={{
-            top: -15.5,
             justifyContent: "center",
             alignItems: "center",
             width: 50,
@@ -83,6 +82,7 @@ const AppNavigator = () => (
           <MaterialCommunityIcons name="magnify" size={29} color={color} />
         ),
         tabBarButton: (props) => <Tabbarcustombutton {...props} />,
+        tabBarVisible: false,
       }}
     />
 
@@ -94,6 +94,8 @@ const AppNavigator = () => (
           <MaterialCommunityIcons name="heart" size={29} color={color} />
         ),
         tabBarButton: (props) => <Tabbarcustombutton {...props} />,
+
+        tabBarVisible: false,
       }}
     />
 
