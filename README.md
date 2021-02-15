@@ -27,4 +27,4 @@ How to implement a Redux for state managment
 
 How to make a Reusable Components 
 
-![newimage1](https://user-images.githubusercontent.com/56273302/107972742-4d938800-6fda-11eb-9eee-65f91694e792.jpg)
+![Optimized-Screenshot_2021-02-09-20-57-28-455_host exp exponent](https://user-images.githubusercontent.com/56273302/107973297-15d91000-6fdb-11eb-8bca-85844fff5524.jpg)
