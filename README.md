@@ -19,7 +19,7 @@
 
 How to Integrate a API in React APP
 
-How to stracture the code properly
+How to stucture the code properly
 
 How to make a use of animations.
 
