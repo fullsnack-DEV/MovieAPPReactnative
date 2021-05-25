@@ -19,7 +19,7 @@ export default function SearchScreen({ navigation }) {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#29282c" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#000000" }}>
       <SearchCom
         term={term}
         onchangeTerm={(newterm) => setterm(newterm)}

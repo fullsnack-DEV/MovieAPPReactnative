@@ -8,6 +8,7 @@ const HomeNavigator = () => (
   <Stack.Navigator
     screenOptions={{
       headerShown: false,
+    
     }}
   >
     <Stack.Screen name="home" component={HomeScreen} />

@@ -28,9 +28,9 @@ export default function MovieinfoScreen({ route }) {
 
   const { item, name } = route.params;
   const newid = item.id;
-  console.log(newid);
+  
   const title = item.title || item.name;
-  console.log(title);
+  
 
   useEffect(() => {
     console.log("this is the cast");

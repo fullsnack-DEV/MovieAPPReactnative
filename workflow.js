@@ -1,1 +1,2 @@
-// To apply a redux in it now
+//To implemet a Redux
+//Redux Implemented
