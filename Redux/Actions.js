@@ -23,6 +23,6 @@ export const deletefav = (id) => ({
 
 // Store contains a State ==> State defines UI ==> UI will trigger a Action ==> Action will be passed to the Reducers ==> Reducers will update the state in the store
 
-//this action creators we will pass to our Reducers and according  to the action.type
-//The Responssible Reducer will be invoked. Action creators will also carry some data that will
+// this action creators we will pass to our Reducers and according  to the action.type
+// The Responssible Reducer will be invoked. Action creators will also carry some data that will
 // be used to modifify the  state using Reducers

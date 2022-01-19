@@ -18,7 +18,7 @@ export const mainreducer = (state = INTIALSTATE, action) => {
         }),
       };
 
-    case DELETEFAV:
+    case DELETEFAV: 
       return {
         ...state,
         Cart: state.Cart.filter((item) => item.id != action.id),
